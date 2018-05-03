@@ -1,0 +1,9 @@
+{
+  "parser": "esprima",
+  "rules": {
+      "semi": "error"
+  },
+  "plugins": [
+    "vue"
+  ]
+}
