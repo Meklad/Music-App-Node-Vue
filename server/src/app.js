@@ -25,5 +25,23 @@ app.get('/', (req, res) => {
   })
 })
 
+/**
+ * Register Api
+ * Description: this api handel the registraion requests...
+ * @param object req [The upcomming request from frontend]
+ * @param object res [The response from bakcend to frontend]
+ * @returns json     [The User object...]
+ */
+app.post('/register', (req, res) => {
+  res.send({
+    message: `Hello ${req.body.username}, you are registered successfuly...`,
+    status: 200,
+    data: {
+      username: req.body.username,
+      email: req.body.email
+    }
+  })
+})
+
 // Server will start to listen the upcomming requests...
 app.listen(process.env.PORT || 8081)
