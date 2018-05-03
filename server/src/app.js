@@ -37,6 +37,7 @@ app.post('/register', (req, res) => {
     message: `Hello ${req.body.username}, you are registered successfuly...`,
     status: 200,
     data: {
+      fullname: req.body.fullname,
       username: req.body.username,
       email: req.body.email
     }
