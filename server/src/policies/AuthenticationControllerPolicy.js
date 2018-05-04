@@ -3,8 +3,8 @@ const Joi = require('joi')
 module.exports = {
   register (req, res, next) {
     const Schema = {
-      fullname: Joi.string().alphanum().min(3).max(30).required(),
-      username: Joi.string().alphanum().min(3).max(15).required(),
+      fullname: Joi.string().min(3).max(30).required(),
+      username: Joi.string().min(3).max(15).required(),
       email: Joi.string().email().required(),
       password: Joi.string().regex(
         new RegExp('^[a-zA-Z0-9]{8,32}$')
