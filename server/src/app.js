@@ -6,6 +6,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const {sequelize} = require('./models')
+const config = require('./config/config')
 
 // Bulid the server
 const app = express()
@@ -16,33 +18,14 @@ app.use(bodyParser.json())
 // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 app.use(cors())
 
-// Init routes || end points for the app...
+// Backend Routes...
+require('./routes')(app)
 
-// Landing page route...
-app.get('/', (req, res) => {
-  return res.send({
-    message: 'Start Backend...'
+sequelize.sync()
+  .then(() => {
+    // Server will start to listen the upcomming requests...
+    app.listen(config.port)
+
+    // Return message when the server start...
+    console.log(`Server start on port: ${config.port}`)
   })
-})
-
-/**
- * Register Api
- * Description: this api handel the registraion requests...
- * @param object req [The upcomming request from frontend]
- * @param object res [The response from bakcend to frontend]
- * @returns json     [The User object...]
- */
-app.post('/register', (req, res) => {
-  res.send({
-    message: `Hello ${req.body.username}, you are registered successfuly...`,
-    status: 200,
-    data: {
-      fullname: req.body.fullname,
-      username: req.body.username,
-      email: req.body.email
-    }
-  })
-})
-
-// Server will start to listen the upcomming requests...
-app.listen(process.env.PORT || 8081)
