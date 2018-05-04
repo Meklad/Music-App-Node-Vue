@@ -2,6 +2,7 @@
 
 // Define Backend Controllers...
 const AuthenticationController = require('./controllers/AuthenticationController')
+const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 
 module.exports = (app) => {
   /**
@@ -11,5 +12,8 @@ module.exports = (app) => {
    * @param object res [The response from bakcend to frontend]
    * @returns json     [The User object...]
    */
-  app.post('/register', AuthenticationController.register)
+  app.post('/register',
+    AuthenticationControllerPolicy.register,
+    AuthenticationController.register
+  )
 }
