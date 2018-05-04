@@ -1,4 +1,8 @@
 // Init routes || end points for the app...
+
+// Define Backend Controllers...
+const AuthenticationController = require('./controllers/AuthenticationController')
+
 module.exports = (app) => {
   /**
    * Register Api
@@ -7,15 +11,5 @@ module.exports = (app) => {
    * @param object res [The response from bakcend to frontend]
    * @returns json     [The User object...]
    */
-  app.post('/register', (req, res) => {
-    res.send({
-      message: `Hello ${req.body.username}, you are registered successfuly...`,
-      status: 200,
-      data: {
-        fullname: req.body.fullname,
-        username: req.body.username,
-        email: req.body.email
-      }
-    })
-  })
+  app.post('/register', AuthenticationController.register)
 }
