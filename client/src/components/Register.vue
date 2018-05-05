@@ -1,22 +1,24 @@
 <template>
-  <v-layout column>
-    <v-flex xs6 offset-xs-3>
-      <div class="white elevation-2">
-        <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Register</v-toolbar-title>
+  <div class="container">
+    <v-layout column>
+      <v-flex xs6 offset-xs-3>
+        <div class="white elevation-2">
+          <v-toolbar flat dense class="cyan" dark>
+            <v-toolbar-title>Register</v-toolbar-title>
+          </v-toolbar>
           <div class="pl-4 pr-4 pt-2 pb-2">
               <p class="error" v-if="error">{{ error }}</p><br><br>
-              <p class="success" v-if="error">{{ success }}</p><br><br>
-              <input type="text" name="fullname" placeholder="Full Name" v-model="fullname"><br>
-              <input type="text" name="username" placeholder="UserName" v-model="username"><br>
-              <input type="email" name="email" placeholder="Email" v-model="email"><br>
-              <input type="password" name="password" placeholder="Password" v-model="password"><br><br>
-              <button @click="register">Register</button>
-          </div>
-        </v-toolbar>
-      </div>
-    </v-flex>
-  </v-layout>
+              <p class="success" v-if="success">{{ success }}</p><br><br>
+              <input type="text" name="fullname" placeholder="Full Name" v-model="fullname"><br><br>
+              <input type="text" name="username" placeholder="UserName" v-model="username"><br><br>
+              <input type="email" name="email" placeholder="Email" v-model="email"><br><br>
+              <input type="password" name="password" placeholder="Password" v-model="password"><br><br><br>
+              <v-btn  class="cyan" @click="register">Register</v-btn>
+            </div>
+        </div>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
