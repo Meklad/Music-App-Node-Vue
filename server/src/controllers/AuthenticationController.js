@@ -6,6 +6,7 @@ module.exports = {
       const user = await User.create(req.body)
       res.send({
         success: 200,
+        message: 'Success',
         data: user
       })
     } catch (err) {

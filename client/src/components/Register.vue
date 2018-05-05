@@ -1,24 +1,41 @@
 <template>
-  <div class="container">
-    <v-layout column>
-      <v-flex xs6 offset-xs-3>
+    <v-layout row>
+      <v-flex xs12 sm6 offset-sm3>
         <div class="white elevation-2">
-          <v-toolbar flat dense class="cyan" dark>
+          <v-toolbar flat dense class="blue" dark>
             <v-toolbar-title>Register</v-toolbar-title>
           </v-toolbar>
           <div class="pl-4 pr-4 pt-2 pb-2">
-              <p class="error" v-if="error">{{ error }}</p><br><br>
-              <p class="success" v-if="success">{{ success }}</p><br><br>
-              <input type="text" name="fullname" placeholder="Full Name" v-model="fullname"><br><br>
-              <input type="text" name="username" placeholder="UserName" v-model="username"><br><br>
-              <input type="email" name="email" placeholder="Email" v-model="email"><br><br>
-              <input type="password" name="password" placeholder="Password" v-model="password"><br><br><br>
-              <v-btn  class="cyan" @click="register">Register</v-btn>
+              <p class="error" v-if="error">{{ error }}</p>
+              <p class="success" v-if="success">{{ success }}</p>
+              <v-text-field
+                label="Full Name"
+                v-model="fullname"
+              ></v-text-field>
+              <v-text-field
+                label="Username"
+                v-model="username"
+              ></v-text-field>
+              <v-text-field
+                label="eMail"
+                v-model="email"
+              ></v-text-field>
+              <v-text-field
+                v-model="password"
+                :append-icon="e1 ? 'Show' : 'Hide'"
+                :append-icon-cb="() => (e1 = !e1)"
+                :type="e1 ? 'password' : 'text'"
+                name="input-10-1"
+                label="Enter your password"
+                hint="At least 8 characters"
+                min="8"
+                counter
+              ></v-text-field>
+              <v-btn  class="blue" dark @click="register">Register</v-btn>
             </div>
         </div>
       </v-flex>
     </v-layout>
-  </div>
 </template>
 
 <script>
@@ -31,7 +48,8 @@ export default {
       email: '',
       password: '',
       success: null,
-      error: null
+      error: null,
+      e1: false
     }
   },
 
@@ -44,7 +62,7 @@ export default {
           email: this.email,
           password: this.password
         })
-        this.success = response.data.success
+        this.success = response.data.message
         console.log(this.success)
       } catch (error) {
         this.error = error.response.data.error
@@ -55,10 +73,5 @@ export default {
 </script>
 
 <style scoped>
-  .success {
-    color: green;
-  }
-  .error {
-    color: red;
-  }
+
 </style>
