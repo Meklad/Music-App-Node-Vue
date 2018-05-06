@@ -25,6 +25,7 @@ module.exports = (app) => {
    * @returns json     [The User object...]
    */
   app.post('/login',
+    AuthenticationControllerPolicy.login,
     AuthenticationController.login
   )
 }

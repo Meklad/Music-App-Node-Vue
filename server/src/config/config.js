@@ -11,5 +11,9 @@ module.exports = {
       storage: './owllog.sqlite',
       operatorsAliases: false
     }
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret',
+    tokenExpireDate: 60 * 60 * 24 * 7
   }
 }
