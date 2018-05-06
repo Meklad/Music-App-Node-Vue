@@ -11,6 +11,9 @@
     </v-toolbar-items> -->
     <v-spacer></v-spacer>
     <v-toolbar-items>
+        <v-btn :to="{path:'/login'}" flat dark>
+          Login
+        </v-btn>
         <v-btn :to="{path:'/register'}" flat dark>
           Sign Up
         </v-btn>

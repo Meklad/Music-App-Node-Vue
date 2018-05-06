@@ -16,4 +16,15 @@ module.exports = (app) => {
     AuthenticationControllerPolicy.register,
     AuthenticationController.register
   )
+
+  /**
+   * Register Api
+   * Description: this api handel the registraion requests...
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.post('/login',
+    AuthenticationController.login
+  )
 }
