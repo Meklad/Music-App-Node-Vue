@@ -15,7 +15,8 @@ module.exports = {
       res.send({
         success: 200,
         message: 'Success',
-        data: user
+        data: user,
+        token: jwtSignUser(user.toJSON())
       })
     } catch (err) {
       res.status(400).send({
