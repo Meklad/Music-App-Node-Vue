@@ -11,10 +11,10 @@
     </v-toolbar-items> -->
     <v-spacer></v-spacer>
     <v-toolbar-items>
-        <v-btn :to="{path:'/login'}" flat dark>
+        <v-btn v-if="!$store.state.isUserLoggedIn" :to="{path:'/login'}" flat dark>
           Login
         </v-btn>
-        <v-btn :to="{path:'/register'}" flat dark>
+        <v-btn v-if="!$store.state.isUserLoggedIn" :to="{path:'/register'}" flat dark>
           Sign Up
         </v-btn>
     </v-toolbar-items>
