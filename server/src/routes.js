@@ -62,4 +62,15 @@ module.exports = (app) => {
   app.get('/songs/:songId',
     SongsController.show
   )
+
+  /**
+   * Return a song using songId
+   * Description: this api return song using song id.
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.put('/songs/:songId',
+    SongsController.put
+  )
 }
