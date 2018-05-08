@@ -30,4 +30,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.danger-alert {
+  color: white;
+  background: red;
+  border: 1px solid red;
+  border-radius: 3px;
+},
+.success-alert {
+  color: white;
+  background: green;
+  border: 1px solid green;
+  border-radius: 3px;
+}
 </style>

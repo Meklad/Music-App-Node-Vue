@@ -4,7 +4,7 @@ const config = require('../config/config')
 
 function jwtSignUser (user) {
   return jwt.sign(user, config.authentication.jwtSecret, {
-    expiresIn: config.authentication.tokenExpireDate
+    expiresIn: 60 * 60 * 24 * 7
   })
 }
 
@@ -42,7 +42,7 @@ module.exports = {
 
       const isPasswordVaild = await user.comparePassword(password)
       console.log(isPasswordVaild)
-      
+
       if (!isPasswordVaild) {
         return res.status(403).send({
           error: 'The login information is incorrect...'

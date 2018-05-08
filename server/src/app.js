@@ -21,7 +21,7 @@ app.use(cors())
 // Backend Routes...
 require('./routes')(app)
 
-sequelize.sync()
+sequelize.sync({force: false})
   .then(() => {
     // Server will start to listen the upcomming requests...
     app.listen(config.port)

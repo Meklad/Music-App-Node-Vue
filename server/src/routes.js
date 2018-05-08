@@ -3,6 +3,7 @@
 // Define Backend Controllers...
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
+const SongsController = require('./controllers/SongsController')
 
 module.exports = (app) => {
   /**
@@ -27,5 +28,27 @@ module.exports = (app) => {
   app.post('/login',
     AuthenticationControllerPolicy.login,
     AuthenticationController.login
+  )
+
+  /**
+   * Get All Songs Api
+   * Description: this api return all songs to the front end
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.get('/songs',
+    SongsController.index
+  )
+
+  /**
+   * Create new song Api
+   * Description: this api return all songs to the front end
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.post('/songs/post',
+    SongsController.post
   )
 }

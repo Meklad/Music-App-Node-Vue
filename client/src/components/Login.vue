@@ -1,12 +1,8 @@
 <template>
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <div class="white elevation-2">
-          <v-toolbar flat dense class="blue" dark>
-            <v-toolbar-title>Login</v-toolbar-title>
-          </v-toolbar>
-          <div class="pl-4 pr-4 pt-2 pb-2">
-              <p class="error" v-if="error">{{ error }}</p>
+        <panel title="Login">
+          <p class="error" v-if="error">{{ error }}</p>
               <p class="success" v-if="success">{{ success }}</p>
               <v-text-field
                 label="eMail"
@@ -24,15 +20,19 @@
                 counter
               ></v-text-field>
               <v-btn  class="blue" dark @click="login">Login</v-btn>
-            </div>
-        </div>
+        </panel>
       </v-flex>
     </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/app-layouts/Panel'
 export default {
+  components: {
+    Panel
+  },
+
   data () {
     return {
       fullname: '',
