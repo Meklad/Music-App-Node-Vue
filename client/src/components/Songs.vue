@@ -33,7 +33,7 @@
               </v-flex>
               <v-flex xs6>
                 <img class="album-image"
-                     src="../assets/images/avatar.png"
+                     :src="song.albumImageUrl"
                      :alt="song.artist + ' - ' + song.title"
                 />
               </v-flex>

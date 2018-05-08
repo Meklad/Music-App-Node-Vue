@@ -43,12 +43,23 @@ module.exports = (app) => {
 
   /**
    * Create new song Api
-   * Description: this api return all songs to the front end
+   * Description: this api create new song and insetr it to database
    * @param object req [The upcomming request from frontend]
    * @param object res [The response from bakcend to frontend]
    * @returns json     [The User object...]
    */
   app.post('/songs/post',
     SongsController.post
+  )
+
+  /**
+   * Return a song using songId
+   * Description: this api return song using song id.
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.get('/songs/:songId',
+    SongsController.show
   )
 }
