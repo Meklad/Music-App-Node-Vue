@@ -45,7 +45,7 @@ export default {
       password: '',
       success: null,
       error: null,
-      e1: false
+      e1: true
     }
   },
 
@@ -62,6 +62,9 @@ export default {
         this.success = response.data.message
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.data)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
