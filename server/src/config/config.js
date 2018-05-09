@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   // Backend Port: By default backend port = 8081 in local enviroment...
   port: process.env.PORT || 8081,
@@ -8,7 +10,7 @@ module.exports = {
     db_options: {
       dialect: process.env.DIALECT || 'sqlite',
       host: process.env.HOST || 'localhost',
-      storage: './owllog.sqlite',
+      storage: path.resolve(__dirname, '../../owllog.sqlite'),
       operatorsAliases: false
     }
   },

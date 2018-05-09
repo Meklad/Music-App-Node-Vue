@@ -1,0 +1,20 @@
+[
+  {
+    "fullname": "Admin Log",
+    "username": "Admin",
+    "email": "admin@app.app",
+    "password": "123456789"
+  },
+  {
+    "fullname": "Admin Test",
+    "username": "Test",
+    "email": "test@app.app",
+    "password": "123456789"
+  },
+  {
+    "fullname": "Admin App",
+    "username": "App",
+    "email": "app@app.app",
+    "password": "123456789"
+  }
+]
