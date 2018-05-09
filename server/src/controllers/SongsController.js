@@ -3,13 +3,27 @@ const {Song} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
-      const songs = await Song.findAll({
-        limit: 10
-      })
-      res.send({
-        status: 200,
-        songs
-      })
+      let songs = null
+      const search = req.query.search
+      if (search) {
+        console.log('search', search)
+        songs = await Song.findAll({
+          where: {
+            $or: [
+              'title', 'artist', 'genre', 'album'
+            ].map(key => ({
+              [key]: {
+                $like: `%${search}%`
+              }
+            }))
+          }
+        })
+      } else {
+        songs = await Song.findAll({
+          limit: 10
+        })
+      }
+      res.send(songs)
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured trying to get the songs...'

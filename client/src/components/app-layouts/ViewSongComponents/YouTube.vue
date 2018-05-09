@@ -1,22 +1,24 @@
 <template>
   <panel title="YouTube Video">
-    <youtube :video-id="youtubeId" player-width="1280" player-height="750"></youtube>
+    <youtube
+      :video-id="youtubeId"
+      :host="host">
+    </youtube>
   </panel>
 </template>
 
 <script>
-import Panel from '@/components/app-layouts/Panel'
-
 export default {
-  components: {
-    Panel
-  },
   props: [
     'youtubeId'
-  ]
+  ],
+  data () {
+    return {
+      host: 'https://www.youtube.com'
+    }
+  }
 }
 </script>
 
 <style scope>
-
 </style>

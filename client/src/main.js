@@ -9,12 +9,15 @@ import {sync} from 'vuex-router-sync'
 import 'vue-material/dist/vue-material.min.css'
 import store from './store/store'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from './components/app-layouts/Panel'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
 Vue.use(VueYouTubeEmbed)
 sync(store, router)
+
+Vue.component('panel', Panel)
 
 /* eslint-disable no-new */
 new Vue({

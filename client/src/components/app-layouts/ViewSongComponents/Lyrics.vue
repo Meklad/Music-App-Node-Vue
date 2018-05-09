@@ -8,12 +8,7 @@
 </template>
 
 <script>
-import Panel from '@/components/app-layouts/Panel'
-
 export default {
-  components: {
-    Panel
-  },
   props: [
     'lyrics'
   ]

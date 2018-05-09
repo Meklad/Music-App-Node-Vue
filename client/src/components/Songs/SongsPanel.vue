@@ -1,5 +1,18 @@
 <template>
-  <panel title="Song MetaData">
+  <panel title="Songs">
+    <v-btn
+    slot="action"
+    :to="{path:'/songs/create'}"
+    color="grey lighten-1"
+    light
+    small
+    absolute
+    right
+    middle
+    fab>
+    <v-icon>add</v-icon>
+  </v-btn>
+  <div v-for="song in songs" :key="song.id" class="song">
     <v-layout>
       <v-flex xs6>
         <div class="song-title">
@@ -12,8 +25,8 @@
           {{ song.genre }}
         </div>
         <v-btn dark class="cyan"
-          @click="navigateTo({name: 'song-edit', params: {songId: song.id}})">
-          Edit Song
+                @click="navigateTo({name: 'song', params: {songId: song.id}})">
+          View Song
         </v-btn>
       </v-flex>
       <v-flex xs6>
@@ -21,18 +34,30 @@
               :src="song.albumImageUrl"
               :alt="song.artist + ' - ' + song.title"
         />
-        <br>
-        <p>{{song.album}}</p>
       </v-flex>
-      </v-layout>
-  </panel>
+    </v-layout>
+    <hr color="#0097F4">
+  </div>
+</panel>
 </template>
 
 <script>
+import SongsService from '@/services/SongsService'
+
 export default {
-  props: [
-    'song'
-  ],
+  data () {
+    return {
+      songs: null
+    }
+  },
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
+  },
   methods: {
     navigateTo (route) {
       this.$router.push(route)
@@ -41,7 +66,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .song {
   padding: 20px;
   height: 225px;

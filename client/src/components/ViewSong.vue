@@ -22,7 +22,6 @@
 
 <script>
 import SongsService from '@/services/SongsService'
-import Panel from '@/components/app-layouts/Panel'
 import SongMetadata from '@/components/app-layouts/ViewSongComponents/SongMetadata'
 import YouTube from '@/components/app-layouts/ViewSongComponents/YouTube'
 import Tab from '@/components/app-layouts/ViewSongComponents/Tab'
@@ -30,7 +29,6 @@ import Lyrics from '@/components/app-layouts/ViewSongComponents/Lyrics'
 
 export default {
   components: {
-    Panel,
     SongMetadata,
     YouTube,
     Tab,
