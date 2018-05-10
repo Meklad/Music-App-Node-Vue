@@ -1,13 +1,15 @@
 const {
   sequelize,
   User,
-  Song
+  Song,
+  Bookmark
 } = require('../src/models')
 const Promise = require('bluebird')
 
 const songs = require('./seeds/songs.json')
 const users = require('./seeds/users.json')
-
+const bookmarks = require('./seeds/bookmarks.json')
+console.log(bookmarks)
 sequelize.sync({force: true})
   .then(async function () {
     await Promise.all(
@@ -19,6 +21,12 @@ sequelize.sync({force: true})
     await Promise.all(
       songs.map(song => {
         Song.create(song)
+      })
+    )
+
+    await Promise.all(
+      bookmarks.map(bookmark => {
+        Bookmark.create(bookmark)
       })
     )
   })

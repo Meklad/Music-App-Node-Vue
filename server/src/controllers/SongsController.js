@@ -75,5 +75,5 @@ module.exports = {
         error: 'An error has occured trying to update the song...'
       })
     }
-  },
+  }
 }

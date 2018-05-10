@@ -4,6 +4,7 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const SongsController = require('./controllers/SongsController')
+const BookmarksController = require('./controllers/BookmarksController')
 
 module.exports = (app) => {
   /**
@@ -72,5 +73,16 @@ module.exports = (app) => {
    */
   app.put('/songs/:songId',
     SongsController.put
+  )
+
+  /**
+   * Return a song using songId
+   * Description: this api return song using song id.
+   * @param object req [The upcomming request from frontend]
+   * @param object res [The response from bakcend to frontend]
+   * @returns json     [The User object...]
+   */
+  app.get('/bookmarks',
+    BookmarksController.index
   )
 }
